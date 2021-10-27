@@ -25,17 +25,17 @@
             <input type="checkbox" [checked]="todoItem.isCompleted">
             {{ todoItem.title }}
           </div>
-          <div class="buttons">
-            <button class="button is-success is-outlined is-small " (click)="service.togglePostponed(todoItem)" [disabled]="todoItem.isCompleted"><span class="icon"><i class="far fa-clock"></i></span></button>
-            <button class="button is-success is-outlined is-small" (click)="service.delete(todoItem)"><span class="icon"><i class="fas fa-times"></i></span></button>
+          <div class="field is-grouped">
+            <button class="button is-success is-outlined is-small mr-1" (click)="service.togglePostponed(todoItem)" [disabled]="todoItem.isCompleted"><span class="icon"><i class="far fa-clock"></i></span></button>
+            <button class="button is-success is-outlined is-small ml-1" (click)="service.delete(todoItem)"><span class="icon"><i class="fas fa-times"></i></span></button>
           </div>
         </label>
         </ng-container>
         <div class="panel-block is-justify-content-space-between">
-          <button class="button is-success is-light is-outlined is-fullwidth mr-1" (click)="service.restorePostponed()">
+          <button class="button is-success is-light is-small sis-outlined is-fullwidth mr-1" (click)="service.restorePostponed()">
             Restore postponed
           </button>
-            <button class="button is-success is-light is-outlined is-fullwidth ml-1" (click)="service.deleteCompleted()">
+            <button class="button is-success is-light is-small is-outlined is-fullwidth ml-1" (click)="service.deleteCompleted()">
               Clean completed
             </button>
         </div>

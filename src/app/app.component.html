@@ -1,0 +1,45 @@
+<section class="section">
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <nav class="panel">
+        <p class="panel-heading">
+          todo-list
+        </p>
+        <div class="panel-block">
+          <p class="control has-icons-left">
+            <input class="input" type="text" [(ngModel)]="newTodoTitle" placeholder="Todo">
+            <span class="icon is-left">
+              <i class="fas fa-list-ul"></i>
+            </span>
+          </p>
+          <button class="button is-success is-outlined is-light ml-2" (click)="service.addItem(newTodoTitle)">
+            Add
+          </button>
+        </div>
+         <ng-container *ngFor="let todoItem of service.todosList">
+         <label class="panel-block is-justify-content-space-between" *ngIf="!todoItem.isPostponed">
+          <div class="checkbox" (click)="service.toggleCompleted(todoItem)" [ngClass] = "{
+            'has-text-success': todoItem.isCompleted,
+            'has-text-dark': !todoItem.isCompleted
+        }">
+            <input type="checkbox" [checked]="todoItem.isCompleted">
+            {{ todoItem.title }}
+          </div>
+          <div class="buttons">
+            <button class="button is-success is-outlined is-small " (click)="service.togglePostponed(todoItem)" [disabled]="todoItem.isCompleted"><span class="icon"><i class="far fa-clock"></i></span></button>
+            <button class="button is-success is-outlined is-small" (click)="service.delete(todoItem)"><span class="icon"><i class="fas fa-times"></i></span></button>
+          </div>
+        </label>
+        </ng-container>
+        <div class="panel-block is-justify-content-space-between">
+          <button class="button is-success is-light is-outlined is-fullwidth mr-1" (click)="service.restorePostponed()">
+            Restore postponed
+          </button>
+            <button class="button is-success is-light is-outlined is-fullwidth ml-1" (click)="service.deleteCompleted()">
+              Clean completed
+            </button>
+        </div>
+      </nav>
+    </div>
+  </div>
+</section>
